@@ -11,9 +11,9 @@ In my analysis, I will show data about weather and temperature, around different
 
 Some insights I will show:
 
-- What is the raining distribution in summer along the last 10 years;
-- Average raining by country region;
-- Average raining by state and year;
+- What is the raining distribution in summer along the last 10 years.
+- Average raining by country region.
+- Average raining by state and year.
 - Which city has the highest and the lowest temperature across the months.
 
 
@@ -27,15 +27,15 @@ Then, all Parquet files are uploaded to Google Cloud Storage, and a External Tab
 
 ## Toolset
 
-1- Google Cloud Platform(GCP): providing infrastructure for cloud computation, data lake storage and warehouse solution;
+1- Google Cloud Platform(GCP): providing infrastructure for cloud computation, data lake storage and warehouse solution.
 
-2- Prefect: to workflow and execute Python code following schedule definition;
+2- Prefect: to workflow and execute Python code following schedule definition.
 
-3- Python: custom code with famous DE Libraries, like Pandas, to Extract and Load the data;
+3- Python: custom code with famous DE Libraries, like Pandas, to Extract and Load the data.
 
-4- Terraform: to create and manipulate GCP resources;
+4- Terraform: to create and manipulate GCP resources.
 
-5- dbt: solution to Transform data inside the BigQuery Warehouse;
+5- dbt: solution to Transform data inside the BigQuery Warehouse.
 
 6- Looker: myashboard solution, this is the final step of all data.
 

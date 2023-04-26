@@ -73,6 +73,7 @@ sudo fallocate -l 4G /swapfile
 sudo chmod 600 /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
+rm /root/.prefect/storage/*
 sudo apt update
 sudo apt install python3-pip -y
 export PREFECT_API_KEY=${var.PREFECT_API_KEY}
