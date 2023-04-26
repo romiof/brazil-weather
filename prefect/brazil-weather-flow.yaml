@@ -1,0 +1,65 @@
+###
+### A complete description of a Prefect Deployment for flow 'main-flow'
+###
+name: brazil-weather-flow
+description: null
+version: a0b92d94a910c5d1df061df184870525
+# The work queue that will handle this deployment's runs
+work_queue_name: default
+work_pool_name: default-agent-pool
+tags: []
+parameters:
+  dict_param:
+    BASE_URL: https://portal.inmet.gov.br/uploads/dadoshistoricos/
+    DEST_DIR: ./dump_zips/
+    END_YEAR: 2023
+    FILE_EXT: .zip
+    START_YEAR: 2013
+schedule:
+  cron: 0 0 * * *
+  timezone: null
+  day_or: true
+is_schedule_active: true
+infra_overrides: {}
+
+###
+### DO NOT EDIT BELOW THIS LINE
+###
+flow_name: main-flow
+manifest_path: null
+infrastructure:
+  type: process
+  env: {}
+  labels: {}
+  name: null
+  command: null
+  stream_output: true
+  working_dir: null
+  _block_document_id: a5f9814f-08c5-4890-9150-cfd04d4797ad
+  _block_document_name: anonymous-4f51d678-ecc6-47ed-80bb-e810638a599f
+  _is_anonymous: true
+  block_type_slug: process
+  _block_type_slug: process
+storage:
+  bucket_path: bucket-br-weather-21/flows
+  service_account_info: '**********'
+  project: null
+  _block_document_id: 7f8b2685-d20a-45b6-a22b-cc81b4bbcdb3
+  _block_document_name: gcs-prefect
+  _is_anonymous: false
+  block_type_slug: gcs
+  _block_type_slug: gcs
+path: ''
+entrypoint: elt_flow.py:main_flow
+parameter_openapi_schema:
+  title: Parameters
+  type: object
+  properties:
+    dict_param:
+      title: dict_param
+      position: 0
+      type: object
+  required:
+  - dict_param
+  definitions: null
+timestamp: '2023-04-25T23:36:51.746631+00:00'
