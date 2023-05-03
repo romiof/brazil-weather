@@ -12,9 +12,9 @@ In my analysis, I will show data about weather and temperature, around different
 Some insights I will show:
 
 - What is the raining distribution in summer along the last 10 years.
-- Average raining by country region.
-- Average raining by state and year.
-- Which city has the highest and the lowest temperature across the months.
+- Raining distribution by country region.
+- Total raining by state and year.
+- Which station has the highest and the lowest temperature across the months.
 
 
 ## Data Pipeline in use

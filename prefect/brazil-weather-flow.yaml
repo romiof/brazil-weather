@@ -3,7 +3,7 @@
 ###
 name: brazil-weather-flow
 description: null
-version: a0b92d94a910c5d1df061df184870525
+version: 22f8c94dbb4d331f94ae21bc07ce9f83
 # The work queue that will handle this deployment's runs
 work_queue_name: default
 work_pool_name: default-agent-pool
@@ -16,7 +16,7 @@ parameters:
     FILE_EXT: .zip
     START_YEAR: 2013
 schedule:
-  cron: 0 0 * * *
+  cron: 0 5 * * *
   timezone: null
   day_or: true
 is_schedule_active: true
@@ -62,4 +62,4 @@ parameter_openapi_schema:
   required:
   - dict_param
   definitions: null
-timestamp: '2023-04-25T23:36:51.746631+00:00'
+timestamp: '2023-05-01T16:45:57.891316+00:00'

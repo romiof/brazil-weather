@@ -75,7 +75,6 @@ def generate_pd(filename: str) -> pd.DataFrame:
     filename: file path of CSV
 
     """
-
     # first, need to catch the station code, which is on line #4 of every CSV file
     # then it will be added as a new column into main dataframe
     station_code = pd.read_csv(
@@ -119,17 +118,27 @@ def generate_pd(filename: str) -> pd.DataFrame:
     df["DATE"] = pd.to_datetime(df["DATE"] + " " + df["TIME"])
     df.drop("TIME", axis=1, inplace=True)
 
-    # some CSVs have blank lines, or lines with -9999 value, due of system malfunction
+    # some CSVs have blank lines, or lines full of -9999 value, due of system malfunction
     # and for those, its lines will be dropped
     df = df[df.TOTAL_PRECIPITATION != -9999]
+    # replace to 0 value -9999 in col Wind Direction
+    # df["WIND_DIRECTION"] = df["WIND_DIRECTION"].replace({-9999: 0})
     df.drop_duplicates(inplace=True)
     df.dropna(axis=0, inplace=True)
 
     # add station code as the first column
     df.insert(0, "STATION_CODE", col_st_code)
 
-    # cast RELATIVE_HUMIDITY to float 
-    df["RELATIVE_HUMIDITY"] = df["RELATIVE_HUMIDITY"].astype(float)
+    # cast columns to float 
+    df = df.astype({"RELATIVE_HUMIDITY": "float",
+                    "MAX_RELATIVE_HUMIDITY": "float",
+                    "MIN_RELATIVE_HUMIDITY": "float",
+                    "WIND_DIRECTION": "float"},
+                    copy=False
+        )
+    # df["RELATIVE_HUMIDITY"] = df["RELATIVE_HUMIDITY"].astype(float)
+    # df["MAX_RELATIVE_HUMIDITY"] = df["MAX_RELATIVE_HUMIDITY"].astype(float)
+    # df["MIN_RELATIVE_HUMIDITY"] = df["MIN_RELATIVE_HUMIDITY"].astype(float)
 
     return df
 
@@ -212,14 +221,15 @@ def create_bg_ext_table(tablename: str) -> None:
     tablename: name of the table
 
     """
-
+    #BUG aqui trava tudo
+    #BUG tem que arrumar os types dos txts importados, pq estão com erros...
     gcs_bucket_block = GcsBucket.load("gcs-bucket")
     uri_gcs = gcs_bucket_block.bucket + "/" + gcs_bucket_block.bucket_folder
 
     # with BigQueryWarehouse(gcp_credentials=gcp_cred) as warehouse:
     with BigQueryWarehouse.load("gcp-bq") as warehouse:
         sql = f"""
-               CREATE OR REPLACE EXTERNAL TABLE `br_weather.{tablename}`
+               CREATE EXTERNAL TABLE IF NOT EXISTS `br_weather.{tablename}`
                    OPTIONS (
                     format = 'PARQUET',
                     uris = ['gs://{uri_gcs}*.parquet']

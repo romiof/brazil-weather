@@ -4,7 +4,7 @@ import extras.functions as ef
 from prefect import flow
 
 
-@flow(log_prints=True, retries=3, retry_delay_seconds=10)
+@flow(log_prints=True, retries=3, retry_delay_seconds=10, persist_result=False)
 def extract_load(site_url: str, to_folder: str, file_type: str, start_year: int, end_year: int) -> None:
 
     YEARS_TO_DOWNLOAD = range(start_year, end_year + 1)
@@ -43,11 +43,8 @@ def extract_load(site_url: str, to_folder: str, file_type: str, start_year: int,
     if os.path.exists(to_folder):
         os.rmdir(to_folder)
 
-    #create BG table
-    ef.create_bg_ext_table("raw_zone")
 
-
-@flow(log_prints=True, retries=3, retry_delay_seconds=10)
+@flow(log_prints=True, retries=3, retry_delay_seconds=10, persist_result=False)
 def main_flow(dict_param: dict) -> None:
 
     # Flow for Extract and Load
@@ -58,6 +55,9 @@ def main_flow(dict_param: dict) -> None:
                  end_year=dict_param["END_YEAR"],
                  )
     
+    #create BG table
+    ef.create_bg_ext_table("raw_zone")
+
     # Flow for dbt Transform
     
 
