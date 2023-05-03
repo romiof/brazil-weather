@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: weather
+    schema: br_weather
+    tables:
+      - name: raw_zone
+      - name: seed_stations
