@@ -4,7 +4,7 @@
 
 {% macro brazil_regions(brazil_state) -%}
 
-    case when {{ brazil_state }} IN ('AC','AM','RN','RO','AP','TO','PA') then 'North'
+    case when {{ brazil_state }} IN ('AC','AM','RR','RO','AP','TO','PA') then 'North'
          when {{ brazil_state }} IN ('AL','BA','CE','MA','PE','PI','PB','SE','RN') then 'Northeast'
          when {{ brazil_state }} IN ('GO','MT','MS','DF') then 'Central-West'
          when {{ brazil_state }} IN ('ES','MG','SP','RJ') then 'Southeast'
