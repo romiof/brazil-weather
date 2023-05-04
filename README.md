@@ -27,19 +27,13 @@ Then, all Parquet files are uploaded to Google Cloud Storage, and a External Tab
 
 ## Toolset
 
-1- Google Cloud Platform(GCP): providing infrastructure for cloud computation, data lake storage and warehouse solution.
-
-2- Prefect: to workflow and execute Python code following schedule definition.
-
-3- Python: custom code with famous DE Libraries, like Pandas, to Extract and Load the data.
-
-4- Terraform: to create and manipulate GCP resources.
-
-5- dbt: solution to Transform data inside the BigQuery Warehouse.
-
-6- Looker: myashboard solution, this is the final step of all data.
+1. Google Cloud Platform(GCP): providing infrastructure for cloud computation, data lake storage and warehouse solution.
+2. Prefect: to workflow and execute Python code following schedule definition.
+3. Python: custom code with famous DE Libraries, like Pandas, to Extract and Load the data.
+4. Terraform: to create and manipulate GCP resources.
+5. dbt: solution to Transform data inside the BigQuery Warehouse.
+6. Looker: my dashboard solution, this is the final step of all data.
 
 
 ## How to execute my project
-
-foo bar
+For all instructions, [please follow to this page](HOW-TO-RUN.md).
