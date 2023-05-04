@@ -32,6 +32,7 @@ cd brazil-weather
 ### How to use Terraform
 At folder `brazil-weather/terraform` run this to download all artifacts:
 ```bash
+cd ~/brazil-weather/terraform
 terraform init
 ```
 My terraform recipe will setup three GCP objects at "us-west1" / "us-west1-a", to use GCP Free Tier.
@@ -78,7 +79,7 @@ Under `Blocks` create four itens:
 \** And under these, you must associate with `gcp-login` created early.
 
 <details>
-![Prefect Blocks](/assets/prefect-cloud-blocks.png)
+![Prefect Blocks](./assets/prefect-cloud-blocks.png)
 </details>
 
 ### Python, VirtualEnv and Prefect Local
@@ -126,7 +127,7 @@ parameters:
 ```
 
 <details>
-![Deployment Parameters](/assets/prefect-yaml.png)
+![Deployment Parameters](./assets/prefect-yaml.png)
 </details>
 
 Now lets apply it to Prefect Cloud, and you will see it at your environment:
