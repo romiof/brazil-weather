@@ -136,6 +136,14 @@ prefect config set PREFECT_API_ENABLE_HTTP2=false
 ```
 > Prefect Agents / Cloud Servers, are having some troubles with *HTTP2*, for this, I suggest you to disable it for a while. [GitHub Issue](https://github.com/PrefectHQ/prefect/issues/7442)
 
+My `.py` files used for Prefect, consist in [one main file](./prefect/elt_flow.py) and a [extra function file](./prefect/extras/functions.py).
+All csv files used for ELT, will be downloaded from `https://portal.inmet.gov.br/uploads/dadoshistoricos/`. This URL is inputed at the dict-key\[**BASE_URL**\].
+
+<details>
+
+![Prefect Flow "DAG"](./assets/prefect-cloud-flow-run.png)
+</details>
+
 Now let's deploy our flow to Cloud Workspace.
 It will use a sub-folder `/flows/`, under GCS Bucket (from Prefect Block), to save our `.py` files.
 After that, our `Prefect Agent` will download these files in each flow run.
@@ -193,8 +201,9 @@ I'll describe my steps to use [dbt Cloud](https://cloud.getdbt.com/)
     - [Reference](https://docs.getdbt.com/docs/cloud/connect-data-platform/connect-bigquery#json-keyfile)
 1. Project subdirectory
     - Insert here `dbt` (this link to a folder `dbt` at my repo)
+1. For development, in dbt, use a git branch called `dbt-cloud`
 
-Now, you must create a dbt Environment and after a dbt Job.
+Now, you must create a *dbt Environment* and after a *dbt Job*.
 
 1. Go to Deploy >> Environments
     1. \+ Create Environment
